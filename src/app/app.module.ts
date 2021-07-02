@@ -4,20 +4,22 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchStockComponent } from '../components/search-stock/search-stock.component';
+import { StockDetailsComponent } from '../components/stock-details/stock-details.component';
 
-import {TabViewModule} from 'primeng/tabview';
-import { AgGridModule } from 'ag-grid-angular';
+import { TabViewModule } from 'primeng/tabview';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchStockComponent
+    SearchStockComponent,
+    StockDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TabViewModule,
-    AgGridModule.withComponents([])
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

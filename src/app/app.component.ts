@@ -7,5 +7,5 @@ import { UIConstants } from '../constants/ui.constants';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = UIConstants.Constants.TITLE;
+  title = UIConstants.TITLE;
 }
