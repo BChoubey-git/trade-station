@@ -1,13 +1,13 @@
 export class UIConstants {
     public static TITLE = 'TradeStation';
     public static STOCK_TABLE_HEADERS = [
-        'Stock',
-        'Sector',
-        'Margin(M)',
-        'Quantity(Q)',
-        'MPS',
-        'Buy Future',
-        'Sell Future',
-        'View Chart'
-    ]
+        { field: 'stock_name', header: 'Stock' },
+        { field: 'sector_name', header: 'Sector' },
+        { field: 'margin', header: 'Margin(M)' },
+        { field: 'quantity', header: 'Quantity(Q)' },
+        { field: 'mps', header: 'MPS' },
+        { field: 'buyFuture', header: 'Buy Future' },
+        { field: 'sellFuture', header: 'Sell Future' },
+        { field: 'viewChart', header: 'View Chart' }
+    ];
 }
