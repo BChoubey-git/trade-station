@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { SearchStockComponent } from '../components/search-stock/search-stock.component';
 import { StockDetailsComponent } from '../components/stock-details/stock-details.component';
@@ -19,7 +20,8 @@ import { TableModule } from 'primeng/table';
     BrowserModule,
     AppRoutingModule,
     TabViewModule,
-    TableModule
+    TableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

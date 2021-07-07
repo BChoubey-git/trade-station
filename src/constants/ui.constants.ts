@@ -1,5 +1,7 @@
 export class UIConstants {
     public static TITLE = 'TradeStation';
+    public static SUCCESS = 'success';
+    public static STATUS_CODE = 200;
     public static STOCK_TABLE_HEADERS = [
         { field: 'stock_name', header: 'Stock' },
         { field: 'sector_name', header: 'Sector' },
