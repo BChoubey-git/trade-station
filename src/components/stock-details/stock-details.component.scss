@@ -1,3 +1,28 @@
 .search {
     text-align: left;
 }
+
+input[type=text] {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+     border-radius: 20px;
+     border: 1px solid #000000;
+     color: #000000;
+     width: 200px;
+     height: 30px;
+     padding-left: 10px;
+    }
+    
+input[type=text]:focus {
+     outline: none;
+     border: 1px solid #000000;
+     color: #000000;
+}
+
+.refresh {
+    float: right;
+}
+
+.pointer {
+    cursor: pointer;
+}

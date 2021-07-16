@@ -1,9 +1,17 @@
+<p-messages [(value)]="growlMsg" [showTransitionOptions]="'300ms ease-out'" [hideTransitionOptions]="'2250ms ease-in'">
+</p-messages>
 <p-table [columns]="stockTableHeaders" [value]="stockTableData" #dt>
   <ng-template pTemplate="caption">
     <div class="search">
-      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-      <input type="text" pInputText size="50" placeholder="Search stock"
-        (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+      <span>
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input type="text" pInputText size="50" placeholder="Search stock"
+          (input)="dt.filterGlobal($event.target.value, 'contains')">
+      </span>
+      <span class="refresh">
+        <i class="fa fa-refresh" style="margin:4px 4px 0 0" (click)="fetchStockData()"></i>
+        {{ refresh }}: {{ stockTimeStamp }}
+      </span>
     </div>
   </ng-template>
   <ng-template pTemplate="header" let-columns>
@@ -20,16 +28,22 @@
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-rowData let-data>
+  <ng-template pTemplate="body" let-data>
     <tr>
       <td>{{ data.stock_name }}</td>
       <td>{{ data.sector_name }}</td>
       <td>{{ data.margin }}</td>
       <td>{{ data.quantity }}</td>
       <td>{{ data.mps }}</td>
-      <td><button>Buy</button></td>
-      <td><button>Sell</button></td>
-      <td><button>Open</button></td>
+      <td>
+        <p-button (click)="buyStock()" class="pointer" label="Buy" [disabled]="didBuy"></p-button>
+      </td>
+      <td>
+        <p-button (click)="sellStock()" class="pointer" label="Sell" [disabled]="didSell"></p-button>
+      </td>
+      <td>
+        <p-button (click)="viewChart()" class="pointer" label="Open"></p-button>
+      </td>
     </tr>
   </ng-template>
   <!-- the below commented code also works fine but since we have to add 3 buttons we cannot use *ngFor -->

@@ -7,8 +7,11 @@ import { AppComponent } from './app.component';
 import { SearchStockComponent } from '../components/search-stock/search-stock.component';
 import { StockDetailsComponent } from '../components/stock-details/stock-details.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
+import { MessagesModule } from 'primeng/messages';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { TableModule } from 'primeng/table';
     AppRoutingModule,
     TabViewModule,
     TableModule,
+    MessagesModule,
+    ButtonModule,
+    BrowserAnimationsModule,
     HttpClientModule
   ],
   providers: [],

@@ -1,0 +1,9 @@
+{
+    "result": "success",
+    "status_code": 200,
+    "message": "sell order placed",
+    "time_stamp": "2021/05/05 9:40",
+    "data": {
+        "order_id": "123456789"
+    }
+}
