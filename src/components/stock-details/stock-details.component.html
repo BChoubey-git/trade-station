@@ -28,18 +28,18 @@
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-data>
+  <ng-template pTemplate="body" let-data let-i="rowIndex">
     <tr>
       <td>{{ data.stock_name }}</td>
       <td>{{ data.sector_name }}</td>
       <td>{{ data.margin }}</td>
       <td>{{ data.quantity }}</td>
       <td>{{ data.mps }}</td>
-      <td>
-        <p-button (click)="buyStock()" class="pointer" label="Buy" [disabled]="didBuy"></p-button>
+      <td>{{ data.disabled }}
+        <p-button (click)="buyStock(i)" class="pointer" label="Buy" [disabled]="data.disabledBuy"></p-button>
       </td>
       <td>
-        <p-button (click)="sellStock()" class="pointer" label="Sell" [disabled]="didSell"></p-button>
+        <p-button (click)="sellStock(i)" class="pointer" label="Sell" [disabled]="data.disabledSell"></p-button>
       </td>
       <td>
         <p-button (click)="viewChart()" class="pointer" label="Open"></p-button>

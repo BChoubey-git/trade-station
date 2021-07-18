@@ -15,15 +15,12 @@ export class StockDetailsComponent implements OnInit {
   stockTimeStamp: string;
   refresh: string;
   growlMsg: any[];
-  didBuy: boolean = false;
-  didSell: boolean = false;
 
   constructor(private stockRendererService: StockRendererService) { }
 
   ngOnInit() {
     this.stockTableHeaders = UIConstants.STOCK_TABLE_HEADERS;
     this.refresh = UIConstants.LAST_REFRESH;
-    console.log('refresh=> ', this.refresh);
     this.fetchStockDetails();
   }
 
@@ -45,7 +42,9 @@ export class StockDetailsComponent implements OnInit {
     }
   }
 
-  private buyStock() {
+  private buyStock(index: number) {
+    console.log(index)
+    this.stockTableData[index].disabledBuy = true;
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((buyStockResp) => {
     //   if (buyStockResp.result === UIConstants.SUCCESS
@@ -58,15 +57,14 @@ export class StockDetailsComponent implements OnInit {
     const buyStockResp = this.stockRendererService.buyStock();
     if (buyStockResp.result === UIConstants.SUCCESS
       && buyStockResp.status_code === UIConstants.STATUS_CODE) {
-      this.didBuy = true;
-      console.log('didbuy = ', this.didBuy);
       this.growlMsg = [];
       this.growlMsg.push({ severity: 'success', summary: buyStockResp.message, detail: '' });
 
     }
   }
 
-  private sellStock() {
+  private sellStock(index: number) {
+    this.stockTableData[index].disabledSell = true;
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((sellStockResp) => {
     //   if (sellStockResp.result === UIConstants.SUCCESS
@@ -79,8 +77,6 @@ export class StockDetailsComponent implements OnInit {
     const sellStockResp = this.stockRendererService.sellStock();
     if (sellStockResp.result === UIConstants.SUCCESS
       && sellStockResp.status_code === UIConstants.STATUS_CODE) {
-      this.didSell = true;
-      console.log('didsell = ', this.didSell);
       this.growlMsg = [];
       this.growlMsg.push({ severity: 'success', summary: sellStockResp.message, detail: '' });
     }
