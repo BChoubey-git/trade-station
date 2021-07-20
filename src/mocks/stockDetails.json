@@ -6,59 +6,66 @@
     "data": [
         {
             "stock_name": "TCS",
-            "quantity": 1,
+            "stock_instrument": 123456,
             "sector_name": "IT",
-            "margin": "",
-            "mps": "432"
+            "margin": "₹4.56.789",
+            "margin_amount": 456789,
+            "quantity": 300,
+            "mps": 1,
+            "future_name": "TCS21JUNFUT",
+            "future_instrument": 456789
         },
         {
-            "stock_name": "Acc",
-            "quantity": 10,
-            "sector_name": "Non-IT",
-            "margin": "88",
-            "mps": "123"
+            "stock_name": "INFY",
+            "stock_instrument": 761290,
+            "sector_name": "IT",
+            "margin": "₹3.56.789",
+            "quantity": 1,
+            "mps": 12,
+            "future_name": "INFY21JUNFUT",
+            "future_instrument": 456789
+        },
+        {
+            "stock_name": "Accenture",
+            "stock_instrument": 123412,
+            "sector_name": "IT",
+            "margin": "₹14.56.789",
+            "margin_amount": 456789,
+            "quantity": 8000,
+            "mps": 123,
+            "future_name": "TCS21JUNFUT",
+            "future_instrument": 456789
         },
         {
             "stock_name": "IRCTC",
-            "quantity": 1,
-            "sector_name": "Non-IT",
-            "margin": "543",
-            "mps": ""
+            "stock_instrument": 321456,
+            "sector_name": "Transport",
+            "margin": "₹24.56.789",
+            "quantity": 800,
+            "mps": 23,
+            "future_name": "INFY21JUNFUT",
+            "future_instrument": 456789
         },
         {
-            "stock_name": "ICT",
-            "quantity": 2,
-            "sector_name": "",
-            "margin": "2345",
-            "mps": "54"
+            "stock_name": "Zomato",
+            "stock_instrument": 871223,
+            "sector_name": "Food",
+            "margin": "₹4.58.789",
+            "margin_amount": 456789,
+            "quantity": 100,
+            "mps": 13,
+            "future_name": "TCS21JUNFUT",
+            "future_instrument": 456789
         },
         {
-            "stock_name": "BTC",
-            "quantity": 12,
-            "sector_name": "",
-            "margin": "",
-            "mps": ""
-        },
-        {
-            "stock_name": "DB",
-            "quantity": 1,
-            "sector_name": "",
-            "margin": "",
-            "mps": ""
-        },
-        {
-            "stock_name": "Wipro",
-            "quantity": 1,
-            "sector_name": "",
-            "margin": "",
-            "mps": ""
-        },
-        {
-            "stock_name": "Infy",
-            "quantity": 1,
-            "sector_name": "",
-            "margin": "",
-            "mps": ""
+            "stock_name": "Food Panda",
+            "stock_instrument": 452723,
+            "sector_name": "Food",
+            "margin": "₹4.66.789",
+            "quantity": 10,
+            "mps": 1236,
+            "future_name": "INFY21JUNFUT",
+            "future_instrument": 456789
         }
     ]
 }

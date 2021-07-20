@@ -26,3 +26,34 @@ input[type=text]:focus {
 .pointer {
     cursor: pointer;
 }
+
+tr:hover {
+    background-color: #d0d5da !important;
+}
+
+:host {
+    &::ng-deep {
+        .ui-messages {
+            position: fixed;
+            top: 0px;
+            width: 27%;
+            height: 40px;
+            padding: 5px;
+            margin: 5px;
+        }
+        .ui-messages-success {
+            background-color: lightgreen !important;
+        }
+        .ui-messages .ui-messages-close {
+            font-size: 1em;
+            top: 0.8em;
+        }
+        .ui-messages .ui-messages-icon {
+            font-size: 1.3em !important;
+            padding-top: 5px;
+        }
+        .ui-messages .ui-messages-icon {
+            font-size: 1em;
+        }
+    }
+}

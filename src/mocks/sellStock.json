@@ -1,8 +1,8 @@
 {
     "result": "success",
-    "status_code": 200,
-    "message": "sell order placed",
-    "time_stamp": "2021/05/05 9:40",
+    "status_code": 400,
+    "message": "failed to place a sell order",
+    "time_stamp": "2021/05/05 09:14",
     "data": {
         "order_id": "123456789"
     }

@@ -1,6 +1,7 @@
-<p-messages [(value)]="growlMsg" [showTransitionOptions]="'300ms ease-out'" [hideTransitionOptions]="'2250ms ease-in'">
+<p-messages [(value)]="growlMsg" [showTransitionOptions]="'300ms ease-out'"
+  [hideTransitionOptions]="'500ms ease-in'">
 </p-messages>
-<p-table [columns]="stockTableHeaders" [value]="stockTableData" #dt>
+<p-table [columns]="stockTableHeaders" [value]="stockTableData" [rowHover]="true" #dt>
   <ng-template pTemplate="caption">
     <div class="search">
       <span>
@@ -36,13 +37,13 @@
       <td>{{ data.quantity }}</td>
       <td>{{ data.mps }}</td>
       <td>{{ data.disabled }}
-        <p-button (click)="buyStock(i)" class="pointer" label="Buy" [disabled]="data.disabledBuy"></p-button>
+        <p-button (click)="buyStock(i, data)" class="pointer" label="Buy" [disabled]="data.disabledBuy"></p-button>
       </td>
       <td>
         <p-button (click)="sellStock(i)" class="pointer" label="Sell" [disabled]="data.disabledSell"></p-button>
       </td>
       <td>
-        <p-button (click)="viewChart()" class="pointer" label="Open"></p-button>
+        <p-button (click)="openChart(data)" class="pointer" label="Open"></p-button>
       </td>
     </tr>
   </ng-template>

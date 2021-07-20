@@ -43,8 +43,7 @@ export class StockDetailsComponent implements OnInit {
   }
 
   private buyStock(index: number) {
-    console.log(index)
-    this.stockTableData[index].disabledBuy = true;
+    this.growlMsg = [];
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((buyStockResp) => {
     //   if (buyStockResp.result === UIConstants.SUCCESS
@@ -57,14 +56,16 @@ export class StockDetailsComponent implements OnInit {
     const buyStockResp = this.stockRendererService.buyStock();
     if (buyStockResp.result === UIConstants.SUCCESS
       && buyStockResp.status_code === UIConstants.STATUS_CODE) {
-      this.growlMsg = [];
-      this.growlMsg.push({ severity: 'success', summary: buyStockResp.message, detail: '' });
-
+      this.growlMsg.push({ severity: 'success', summary: buyStockResp.message, detail: 'Order ID: ' + buyStockResp.data.order_id });
+      this.stockTableData[index].disabledBuy = true;
+    } else {
+      this.growlMsg.push({ severity: 'error', summary: buyStockResp.message, detail: '' });
+      this.stockTableData[index].disabledBuy = false;
     }
   }
 
   private sellStock(index: number) {
-    this.stockTableData[index].disabledSell = true;
+    this.growlMsg = [];
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((sellStockResp) => {
     //   if (sellStockResp.result === UIConstants.SUCCESS
@@ -77,11 +78,20 @@ export class StockDetailsComponent implements OnInit {
     const sellStockResp = this.stockRendererService.sellStock();
     if (sellStockResp.result === UIConstants.SUCCESS
       && sellStockResp.status_code === UIConstants.STATUS_CODE) {
-      this.growlMsg = [];
-      this.growlMsg.push({ severity: 'success', summary: sellStockResp.message, detail: '' });
+      this.growlMsg.push({ severity: 'success', summary: sellStockResp.message, detail: 'Order ID: ' + sellStockResp.data.order_id });
+      this.stockTableData[index].disabledSell = true;
+    } else {
+      this.growlMsg.push({ severity: 'error', summary: sellStockResp.message, detail: '' });
+      this.stockTableData[index].disabledSell = false;
     }
   }
 
-  private viewChart() {
+  private openChart(data) {
+    const URL = 'https://kite.zerodha.com/chart/ext/ciq/NSE/';
+    let siteURL = URL
+      + data.stock_name
+      + '/'
+      + data.stock_instrument;
+    window.open("" + siteURL, '_blank');
   }
 }
