@@ -9,7 +9,7 @@ export class UIConstants {
         { field: 'margin', header: 'Margin(M)' },
         { field: 'quantity', header: 'Quantity(Q)' },
         { field: 'mps', header: 'MPS' },
-        { field: 'buyFuture', header: 'Action' },
+        { field: 'buyFuture', header: 'Buy Future' },
         { field: 'sellFuture', header: 'Sell Future' },
         { field: 'viewChart', header: 'View Chart' }
     ];
