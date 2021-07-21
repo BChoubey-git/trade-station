@@ -15,7 +15,7 @@ export class StockDetailsComponent implements OnInit {
   stockTimeStamp: string;
   refresh: string;
   growlMsg: any[];
-
+  
   constructor(private stockRendererService: StockRendererService) { }
 
   ngOnInit() {
@@ -39,10 +39,14 @@ export class StockDetailsComponent implements OnInit {
       && data.status_code === UIConstants.STATUS_CODE) {
       this.stockTimeStamp = data.time_stamp;
       this.stockTableData = data.data;
+      this.stockTableData.forEach((val, i) => {
+        val.index = i;
+        val.disabled = false;
+      });
     }
   }
 
-  private buyStock(index: number) {
+  private buyStock(index: number, stock) {
     this.growlMsg = [];
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((buyStockResp) => {
@@ -57,7 +61,7 @@ export class StockDetailsComponent implements OnInit {
     if (buyStockResp.result === UIConstants.SUCCESS
       && buyStockResp.status_code === UIConstants.STATUS_CODE) {
       this.growlMsg.push({ severity: 'success', summary: buyStockResp.message, detail: 'Order ID: ' + buyStockResp.data.order_id });
-      this.stockTableData[index].disabledBuy = true;
+      stock.disabled = true;
     } else {
       this.growlMsg.push({ severity: 'error', summary: buyStockResp.message, detail: '' });
       this.stockTableData[index].disabledBuy = false;

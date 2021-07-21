@@ -36,8 +36,8 @@
       <td>{{ data.margin }}</td>
       <td>{{ data.quantity }}</td>
       <td>{{ data.mps }}</td>
-      <td>{{ data.disabled }}
-        <p-button (click)="buyStock(i, data)" class="pointer" label="Buy" [disabled]="data.disabledBuy"></p-button>
+      <td>
+        <p-button (click)="buyStock(i, data)" class="pointer" label="Buy" [disabled]="data.disabled"></p-button>
       </td>
       <td>
         <p-button (click)="sellStock(i)" class="pointer" label="Sell" [disabled]="data.disabledSell"></p-button>
