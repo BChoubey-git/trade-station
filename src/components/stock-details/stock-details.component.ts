@@ -15,7 +15,7 @@ export class StockDetailsComponent implements OnInit {
   stockTimeStamp: string;
   refresh: string;
   growlMsg: any[];
-  
+
   constructor(private stockRendererService: StockRendererService) { }
 
   ngOnInit() {
@@ -41,12 +41,13 @@ export class StockDetailsComponent implements OnInit {
       this.stockTableData = data.data;
       this.stockTableData.forEach((val, i) => {
         val.index = i;
-        val.disabled = false;
+        val.disableBuy = false;
+        val.disableSell = false;
       });
     }
   }
 
-  private buyStock(index: number, stock) {
+  private buyStock(stock) {
     this.growlMsg = [];
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((buyStockResp) => {
@@ -61,14 +62,14 @@ export class StockDetailsComponent implements OnInit {
     if (buyStockResp.result === UIConstants.SUCCESS
       && buyStockResp.status_code === UIConstants.STATUS_CODE) {
       this.growlMsg.push({ severity: 'success', summary: buyStockResp.message, detail: 'Order ID: ' + buyStockResp.data.order_id });
-      stock.disabled = true;
+      stock.disableBuy = true;
     } else {
       this.growlMsg.push({ severity: 'error', summary: buyStockResp.message, detail: '' });
-      this.stockTableData[index].disabledBuy = false;
+      stock.disableBuy = false;
     }
   }
 
-  private sellStock(index: number) {
+  private sellStock(stock) {
     this.growlMsg = [];
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((sellStockResp) => {
@@ -83,10 +84,10 @@ export class StockDetailsComponent implements OnInit {
     if (sellStockResp.result === UIConstants.SUCCESS
       && sellStockResp.status_code === UIConstants.STATUS_CODE) {
       this.growlMsg.push({ severity: 'success', summary: sellStockResp.message, detail: 'Order ID: ' + sellStockResp.data.order_id });
-      this.stockTableData[index].disabledSell = true;
+      stock.disableSell = true;
     } else {
       this.growlMsg.push({ severity: 'error', summary: sellStockResp.message, detail: '' });
-      this.stockTableData[index].disabledSell = false;
+      stock.disableSell = false;
     }
   }
 

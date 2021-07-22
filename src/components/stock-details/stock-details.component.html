@@ -1,12 +1,11 @@
-<p-messages [(value)]="growlMsg" [showTransitionOptions]="'300ms ease-out'"
-  [hideTransitionOptions]="'500ms ease-in'">
+<p-messages [(value)]="growlMsg" [showTransitionOptions]="'300ms ease-out'" [hideTransitionOptions]="'500ms ease-in'">
 </p-messages>
 <p-table [columns]="stockTableHeaders" [value]="stockTableData" [rowHover]="true" #dt>
   <ng-template pTemplate="caption">
     <div class="search">
       <span>
         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-        <input type="text" pInputText size="50" placeholder="Search stock"
+        <input type="search" pInputText size="50" placeholder="Search stock" class="search-stock"
           (input)="dt.filterGlobal($event.target.value, 'contains')">
       </span>
       <span class="refresh">
@@ -37,13 +36,15 @@
       <td>{{ data.quantity }}</td>
       <td>{{ data.mps }}</td>
       <td>
-        <p-button (click)="buyStock(i, data)" class="pointer" label="Buy" [disabled]="data.disabled"></p-button>
+        <button pButton (click)="buyStock(data)" label="Buy" [disabled]="data.disableBuy"
+          [ngClass]="!data.disableBuy ? 'pointer' : 'no-pointer'"></button>
       </td>
       <td>
-        <p-button (click)="sellStock(i)" class="pointer" label="Sell" [disabled]="data.disabledSell"></p-button>
+        <button pButton (click)="sellStock(data)" label="Sell" [disabled]="data.disableSell"
+          [ngClass]="!data.disableSell ? 'pointer' : 'no-pointer'"></button>
       </td>
       <td>
-        <p-button (click)="openChart(data)" class="pointer" label="Open"></p-button>
+        <button pButton (click)="openChart(data)" class="pointer" label="Open"></button>
       </td>
     </tr>
   </ng-template>

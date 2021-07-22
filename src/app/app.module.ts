@@ -12,6 +12,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { MessagesModule } from 'primeng/messages';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ButtonModule } from 'primeng/button';
     TableModule,
     MessagesModule,
     ButtonModule,
+    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule
   ],
