@@ -15,10 +15,12 @@ export class StockDetailsComponent implements OnInit {
   stockTimeStamp: string;
   refresh: string;
   growlMsg: any[];
+  inProgress: boolean = false;
 
   constructor(private stockRendererService: StockRendererService) { }
 
   ngOnInit() {
+    this.inProgress = true;
     this.stockTableHeaders = UIConstants.STOCK_TABLE_HEADERS;
     this.refresh = UIConstants.LAST_REFRESH;
     this.fetchStockDetails();
@@ -37,6 +39,7 @@ export class StockDetailsComponent implements OnInit {
     const data = this.stockRendererService.getStock();
     if (data.result === UIConstants.SUCCESS
       && data.status_code === UIConstants.STATUS_CODE) {
+      this.inProgress = false;
       this.stockTimeStamp = data.time_stamp;
       this.stockTableData = data.data;
       this.stockTableData.forEach((val, i) => {
@@ -48,6 +51,7 @@ export class StockDetailsComponent implements OnInit {
   }
 
   private buyStock(stock) {
+    this.inProgress = true;
     this.growlMsg = [];
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((buyStockResp) => {
@@ -63,6 +67,7 @@ export class StockDetailsComponent implements OnInit {
       && buyStockResp.status_code === UIConstants.STATUS_CODE) {
       this.growlMsg.push({ severity: 'success', summary: buyStockResp.message, detail: 'Order ID: ' + buyStockResp.data.order_id });
       stock.disableBuy = true;
+      this.inProgress = false;
     } else {
       this.growlMsg.push({ severity: 'error', summary: buyStockResp.message, detail: '' });
       stock.disableBuy = false;
@@ -70,6 +75,7 @@ export class StockDetailsComponent implements OnInit {
   }
 
   private sellStock(stock) {
+    this.inProgress = true;
     this.growlMsg = [];
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((sellStockResp) => {
@@ -85,6 +91,7 @@ export class StockDetailsComponent implements OnInit {
       && sellStockResp.status_code === UIConstants.STATUS_CODE) {
       this.growlMsg.push({ severity: 'success', summary: sellStockResp.message, detail: 'Order ID: ' + sellStockResp.data.order_id });
       stock.disableSell = true;
+      this.inProgress = false;
     } else {
       this.growlMsg.push({ severity: 'error', summary: sellStockResp.message, detail: '' });
       stock.disableSell = false;

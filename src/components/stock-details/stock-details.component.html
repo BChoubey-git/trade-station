@@ -1,3 +1,6 @@
+<div class="disable-background" *ngIf="inProgress">
+  <p-progressSpinner></p-progressSpinner>
+</div>
 <p-messages [(value)]="growlMsg" [showTransitionOptions]="'300ms ease-out'" [hideTransitionOptions]="'500ms ease-in'">
 </p-messages>
 <p-table [columns]="stockTableHeaders" [value]="stockTableData" [rowHover]="true" #dt>
@@ -6,7 +9,7 @@
       <span>
         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
         <input type="search" pInputText size="50" placeholder="Search stock" class="search-stock"
-          (input)="dt.filterGlobal($event.target.value, 'contains')">
+          (input)="dt.filterGlobal($event.target.value, 'contains')" maxlength="50">
       </span>
       <span class="refresh">
         <i class="fa fa-refresh" style="margin:4px 4px 0 0" (click)="fetchStockData()"></i>

@@ -42,6 +42,10 @@ tr:hover {
         .ui-messages .ui-messages-icon {
             font-size: 1em;
         }
+        .ui-progress-spinner {
+            height: 100%;
+            display: grid;
+        }
     }
 }
 
@@ -63,3 +67,14 @@ tr:hover {
 input[type="search" i]::-webkit-search-cancel-button {
     cursor: pointer;
 }
+
+.disable-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #2d2d2d;
+    opacity: 0.8;
+    z-index: 998;
+    height: 100%;
+    width: 100%;
+ }

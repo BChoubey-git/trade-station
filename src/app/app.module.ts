@@ -8,6 +8,7 @@ import { SearchStockComponent } from '../components/search-stock/search-stock.co
 import { StockDetailsComponent } from '../components/stock-details/stock-details.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { MessagesModule } from 'primeng/messages';
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     MessagesModule,
     ButtonModule,
     FormsModule,
+    ProgressSpinnerModule,
     BrowserAnimationsModule,
     HttpClientModule
   ],
