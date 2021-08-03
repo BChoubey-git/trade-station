@@ -13,10 +13,10 @@ export class StockRendererService {
 
   public getStock() {
     // below line to be uncommented when making service call, URL to be corrected.
-    // return this.httpClient.get(`https://tools.learningcontainer.com/sample-json.json`);
+    return this.httpClient.get(`https://tools.learningcontainer.com/sample-json.json`);
 
     // loading data from hard coded JSON file, stockDetails.json
-    return stockDetails;
+    // return stockDetails;
   }
 
   public buyStock() {

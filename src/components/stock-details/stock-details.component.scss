@@ -23,9 +23,9 @@ tr:hover {
         .ui-messages {
             position: fixed;
             top: 0px;
-            width: 27%;
+            width: auto;
             height: 40px;
-            padding: 5px;
+            padding: 5px 25px 5px 5px;
             margin: 5px;
         }
         .ui-messages-success {

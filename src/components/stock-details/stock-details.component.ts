@@ -27,27 +27,50 @@ export class StockDetailsComponent implements OnInit {
   }
 
   private fetchStockDetails() {
+    this.inProgress = true;
+    this.growlMsg = [];
     // Below code to be uncommented when making service call
     // this.stockRendererService.getStock().subscribe((data) => {
     //   if (data.result === UIConstants.SUCCESS
     //     && data.status_code === UIConstants.STATUS_CODE) {
+    //     this.inProgress = false;
+    //     this.stockTimeStamp = data.time_stamp;
     //     this.stockTableData = data.data;
+    //     this.stockTableData.forEach((val, i) => {
+    //       val.index = i;
+    //       val.disableBuy = false;
+    //       val.disableSell = false;
+    //     });
+    //   } else {
+    //     this.inProgress = false;
+    //     this.growlMsg.push({
+    //       severity: 'error',
+    //       summary: 'Error occured while loading the stocks, please try again',
+    //       detail: ''
+    //     });
     //   }
     // });
 
     // loading data from mock json, stockDetails.json
-    const data = this.stockRendererService.getStock();
-    if (data.result === UIConstants.SUCCESS
-      && data.status_code === UIConstants.STATUS_CODE) {
-      this.inProgress = false;
-      this.stockTimeStamp = data.time_stamp;
-      this.stockTableData = data.data;
-      this.stockTableData.forEach((val, i) => {
-        val.index = i;
-        val.disableBuy = false;
-        val.disableSell = false;
-      });
-    }
+    // const data = this.stockRendererService.getStock();
+    // if (data.result === UIConstants.SUCCESS
+    //   && data.status_code === UIConstants.STATUS_CODE) {
+    //   this.inProgress = false;
+    //   this.stockTimeStamp = data.time_stamp;
+    //   this.stockTableData = data.data;
+    //   this.stockTableData.forEach((val, i) => {
+    //     val.index = i;
+    //     val.disableBuy = false;
+    //     val.disableSell = false;
+    //   });
+    // } else {
+    //   this.inProgress = false;
+    //   this.growlMsg.push({
+    //     severity: 'error',
+    //     summary: 'Error occured while loading the stocks, please try again',
+    //     detail: ''
+    //   });
+    // }
   }
 
   private buyStock(stock) {
