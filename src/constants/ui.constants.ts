@@ -11,6 +11,7 @@ export class UIConstants {
         { field: 'mps', header: 'MPS' },
         { field: 'buyFuture', header: 'Buy Future' },
         { field: 'sellFuture', header: 'Sell Future' },
-        { field: 'viewChart', header: 'View Chart' }
+        { field: 'viewChart', header: 'View Chart' },
+        { field: 'viewFutureChart', header: 'View Future Chart' }
     ];
 }

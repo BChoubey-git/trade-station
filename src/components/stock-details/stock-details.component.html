@@ -21,7 +21,8 @@
     <tr>
       <th *ngFor="let header of columns" [pSortableColumn]="header.field" [pSortableColumnDisabled]="header.field === 'buyFuture' ||
         header.field === 'sellFuture' ||
-        header.field === 'viewChart'">
+        header.field === 'viewChart' ||
+        header.field === 'viewFutureChart'">
         {{ header.header }}
         <p-sortIcon [field]="header.field" *ngIf="header.field === 'stock_name' ||
         header.field === 'sector_name' ||
@@ -39,15 +40,20 @@
       <td>{{ data.quantity }}</td>
       <td>{{ data.mps }}</td>
       <td>
-        <button pButton (click)="buyStock(data)" label="Buy" [disabled]="data.disableBuy"
-          [ngClass]="!data.disableBuy ? 'pointer' : 'no-pointer'"></button>
+        <!-- <button pButton (click)="buyStock(data)" label="Buy" [disabled]="data.disableBuy"
+          [ngClass]="!data.disableBuy ? 'pointer' : 'no-pointer'"></button> -->
+        <button pButton label="Buy" [disabled]="true" class="no-pointer"></button>
       </td>
       <td>
-        <button pButton (click)="sellStock(data)" label="Sell" [disabled]="data.disableSell"
-          [ngClass]="!data.disableSell ? 'pointer' : 'no-pointer'"></button>
+        <!-- <button pButton (click)="sellStock(data)" label="Sell" [disabled]="data.disableSell"
+          [ngClass]="!data.disableSell ? 'pointer' : 'no-pointer'"></button> -->
+        <button pButton label="Sell" [disabled]="true" class="no-pointer"></button>
       </td>
       <td>
         <button pButton (click)="openChart(data)" class="pointer" label="Open"></button>
+      </td>
+      <td>
+        <button pButton (click)="openFutureChart(data)" class="pointer" label="Open"></button>
       </td>
     </tr>
   </ng-template>

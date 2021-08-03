@@ -129,4 +129,13 @@ export class StockDetailsComponent implements OnInit {
       + data.stock_instrument;
     window.open("" + siteURL, '_blank');
   }
+
+  private openFutureChart(data) {
+    const URL = 'https://kite.zerodha.com/chart/ext/ciq/NSE/';
+    let siteURL = URL
+      + data.future_name
+      + '/'
+      + data.future_instrument;
+    window.open("" + siteURL, '_blank');
+  }
 }
