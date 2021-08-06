@@ -15,6 +15,9 @@ export class StockDetailsComponent implements OnInit {
   stockTimeStamp: string;
   refresh: string;
   growlMsg: any[];
+  timeList: any = [];
+  time: any = [];
+  selectedTime;
   inProgress: boolean = false;
 
   constructor(private stockRendererService: StockRendererService) { }
@@ -24,6 +27,7 @@ export class StockDetailsComponent implements OnInit {
     this.stockTableHeaders = UIConstants.STOCK_TABLE_HEADERS;
     this.refresh = UIConstants.LAST_REFRESH;
     this.fetchStockDetails();
+    this.fetchTime();
   }
 
   private fetchStockDetails() {
@@ -52,25 +56,70 @@ export class StockDetailsComponent implements OnInit {
     // });
 
     // loading data from mock json, stockDetails.json
-    // const data = this.stockRendererService.getStock();
-    // if (data.result === UIConstants.SUCCESS
-    //   && data.status_code === UIConstants.STATUS_CODE) {
-    //   this.inProgress = false;
-    //   this.stockTimeStamp = data.time_stamp;
-    //   this.stockTableData = data.data;
-    //   this.stockTableData.forEach((val, i) => {
-    //     val.index = i;
-    //     val.disableBuy = false;
-    //     val.disableSell = false;
-    //   });
-    // } else {
-    //   this.inProgress = false;
-    //   this.growlMsg.push({
-    //     severity: 'error',
-    //     summary: 'Error occured while loading the stocks, please try again',
-    //     detail: ''
-    //   });
-    // }
+    const data = this.stockRendererService.getStock();
+    if (data.result === UIConstants.SUCCESS
+      && data.status_code === UIConstants.STATUS_CODE) {
+      this.inProgress = false;
+      this.stockTimeStamp = data.time_stamp;
+      this.stockTableData = data.data;
+      this.stockTableData.forEach((val, i) => {
+        val.index = i;
+        val.disableBuy = false;
+        val.disableSell = false;
+      });
+    } else {
+      this.inProgress = false;
+      this.growlMsg.push({
+        severity: 'error',
+        summary: 'Error occured while loading the stocks, please try again',
+        detail: ''
+      });
+    }
+  }
+
+  private fetchTime() {
+    this.timeList = this.stockRendererService.getTime();
+    if (this.timeList.result === UIConstants.SUCCESS &&
+      this.timeList.status_code === UIConstants.STATUS_CODE) {
+      this.time = [];
+      let aTime: any = DropDown;
+      // console.log('time-> ', this.time);
+      this.timeList.data.forEach(item => {
+        aTime = {} as DropDown;
+        // console.log('time-> ', item);
+        aTime.value = item,
+          aTime.label = item
+        // console.log('aTime-> ', aTime)
+        this.time.push(aTime);
+        // console.log('a-> ', this.time)
+      });
+      // this.time = timeArray;
+      // console.log('a-> ', this.time)
+    }
+  }
+
+  private onTimeChange(event) {
+    this.selectedTime = event.value;
+    const timedStock = this.stockRendererService.getTimedStock();
+    console.log(timedStock);
+    if (timedStock.result === UIConstants.SUCCESS
+      && timedStock.status_code === UIConstants.STATUS_CODE) {
+      this.inProgress = false;
+      this.stockTimeStamp = timedStock.time_stamp;
+      this.stockTableData = timedStock.data;
+      this.stockTableData.forEach((val, i) => {
+        val.index = i;
+        val.disableBuy = false;
+        val.disableSell = false;
+      });
+    } else {
+      this.inProgress = false;
+      this.growlMsg.push({
+        severity: 'error',
+        summary: 'Error occured while loading the stocks, please try again',
+        detail: ''
+      });
+    }
   }
 
   private buyStock(stock) {
@@ -138,4 +187,9 @@ export class StockDetailsComponent implements OnInit {
       + data.future_instrument;
     window.open("" + siteURL, '_blank');
   }
+}
+
+export class DropDown {
+  label?: string;
+  value?: string;
 }

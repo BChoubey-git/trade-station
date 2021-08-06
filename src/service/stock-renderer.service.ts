@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import timedStockDetails from '../mocks/timedStockDetails.json';
 import stockDetails from '../mocks/stockDetails.json';
 import buyStock from '../mocks/buyStock.json';
 import sellStock from '../mocks/sellStock.json';
+import timeList from '../mocks/timeList.json';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +15,26 @@ export class StockRendererService {
 
   public getStock() {
     // below line to be uncommented when making service call, URL to be corrected.
-    return this.httpClient.get(`https://tools.learningcontainer.com/sample-json.json`);
+    // return this.httpClient.get(`https://tools.learningcontainer.com/sample-json.json`);
 
     // loading data from hard coded JSON file, stockDetails.json
-    // return stockDetails;
+    return stockDetails;
+  }
+
+  public getTimedStock() {
+    // below line to be uncommented when making service call, URL to be corrected.
+    // return this.httpClient.get(`https://tools.learningcontainer.com/sample-json.json`);
+
+    // loading data from hard coded JSON file, timedStockDetails.json
+    return timedStockDetails;
+  }
+
+  public getTime() {
+    // below line to be uncommented when making service call, URL to be corrected.
+    // return this.httpClient.get(`https://tools.learningcontainer.com/sample-json.json`);
+
+    // loading data from hard coded JSON file, timeList.json
+    return timeList;
   }
 
   public buyStock() {

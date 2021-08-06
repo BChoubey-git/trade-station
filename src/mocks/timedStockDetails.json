@@ -1,0 +1,71 @@
+{
+    "result": "success",
+    "status_code": 200,
+    "message": "stock list",
+    "time_stamp": "2021/05/05 09:14",
+    "data": [
+        {
+            "stock_name": "TCS_time",
+            "stock_instrument": 123456,
+            "sector_name": "IT",
+            "margin": "₹4.56.789_time",
+            "margin_amount": 456789,
+            "quantity": 300,
+            "mps": 1,
+            "future_name": "TCS21JUNFUT",
+            "future_instrument": 456789
+        },
+        {
+            "stock_name": "INFY_time",
+            "stock_instrument": 761290,
+            "sector_name": "IT",
+            "margin": "₹3.56.789_time",
+            "quantity": 1,
+            "mps": 12,
+            "future_name": "INFY21JUNFUT",
+            "future_instrument": 456789
+        },
+        {
+            "stock_name": "Accenture_time",
+            "stock_instrument": 123412,
+            "sector_name": "IT",
+            "margin": "₹14.56.789_time",
+            "margin_amount": 456789,
+            "quantity": 8000,
+            "mps": 123,
+            "future_name": "TCS21JUNFUT",
+            "future_instrument": 456789
+        },
+        {
+            "stock_name": "IRCTC_time",
+            "stock_instrument": 321456,
+            "sector_name": "Transport",
+            "margin": "₹24.56.789_time",
+            "quantity": 800,
+            "mps": 23,
+            "future_name": "INFY21JUNFUT",
+            "future_instrument": 456789
+        },
+        {
+            "stock_name": "Zomato_time",
+            "stock_instrument": 871223,
+            "sector_name": "Food",
+            "margin": "₹4.58.789_time",
+            "margin_amount": 456789,
+            "quantity": 100,
+            "mps": 13,
+            "future_name": "TCS21JUNFUT",
+            "future_instrument": 456789
+        },
+        {
+            "stock_name": "Food Panda_time",
+            "stock_instrument": 452723,
+            "sector_name": "Food",
+            "margin": "₹4.66.789_time",
+            "quantity": 10,
+            "mps": 1236,
+            "future_name": "INFY21JUNFUT",
+            "future_instrument": 456789
+        }
+    ]
+}
