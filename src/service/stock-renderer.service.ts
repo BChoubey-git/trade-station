@@ -15,26 +15,26 @@ export class StockRendererService {
 
   public getStock() {
     // below line to be uncommented when making service call, URL to be corrected.
-    // return this.httpClient.get(`https://tools.learningcontainer.com/sample-json.json`);
+    return this.httpClient.get("http://localhost:5050/");
 
     // loading data from hard coded JSON file, stockDetails.json
-    return stockDetails;
+    // return stockDetails;
   }
 
-  public getTimedStock() {
+  public getTimedStock(time) {
     // below line to be uncommented when making service call, URL to be corrected.
-    // return this.httpClient.get(`https://tools.learningcontainer.com/sample-json.json`);
+    return this.httpClient.get("http://localhost:5050/getBreakoutDataByTime?time=" + time);
 
     // loading data from hard coded JSON file, timedStockDetails.json
-    return timedStockDetails;
+    // return timedStockDetails;
   }
 
   public getTime() {
     // below line to be uncommented when making service call, URL to be corrected.
-    // return this.httpClient.get(`https://tools.learningcontainer.com/sample-json.json`);
+    return this.httpClient.get("http://localhost:5050/getTimeList");
 
     // loading data from hard coded JSON file, timeList.json
-    return timeList;
+    // return timeList;
   }
 
   public buyStock() {
