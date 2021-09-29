@@ -1,5 +1,8 @@
 <p-tabView>
-  <p-tabPanel header="Search">
+  <p-tabPanel header="Stock Status">
+    <app-stock-status></app-stock-status>
+  </p-tabPanel>
+  <p-tabPanel header="Search" *ngIf="!temporaryHideSearchTab">
     <app-stock-details></app-stock-details>
   </p-tabPanel>
   <p-tabPanel header="Order Book">

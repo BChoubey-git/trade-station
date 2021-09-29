@@ -34,47 +34,47 @@ export class StockDetailsComponent implements OnInit {
     this.inProgress = true;
     this.growlMsg = [];
     // Below code to be uncommented when making service call
-    this.stockRendererService.getStock().subscribe((data:any) => {
-      if (data.result === UIConstants.SUCCESS
-        && data.status_code === UIConstants.STATUS_CODE) {
-        this.inProgress = false;
-        this.stockTimeStamp = data.time_stamp;
-        this.stockTableData = data.data;
-        this.stockTableData.forEach((val, i) => {
-          val.index = i;
-          val.disableBuy = false;
-          val.disableSell = false;
-        });
-      } else {
-        this.inProgress = false;
-        this.growlMsg.push({
-          severity: 'error',
-          summary: 'Error occured while loading the stocks, please try again',
-          detail: ''
-        });
-      }
-    });
+    // this.stockRendererService.getStock().subscribe((data:any) => {
+    //   if (data.result === UIConstants.SUCCESS
+    //     && data.status_code === UIConstants.STATUS_CODE) {
+    //     this.inProgress = false;
+    //     this.stockTimeStamp = data.time_stamp;
+    //     this.stockTableData = data.data;
+    //     this.stockTableData.forEach((val, i) => {
+    //       val.index = i;
+    //       val.disableBuy = false;
+    //       val.disableSell = false;
+    //     });
+    //   } else {
+    //     this.inProgress = false;
+    //     this.growlMsg.push({
+    //       severity: 'error',
+    //       summary: 'Error occured while loading the stocks, please try again',
+    //       detail: ''
+    //     });
+    //   }
+    // });
 
     // loading data from mock json, stockDetails.json
-    // const data:any = this.stockRendererService.getStock();
-    // if (data.result === UIConstants.SUCCESS
-    //   && data.status_code === UIConstants.STATUS_CODE) {
-    //   this.inProgress = false;
-    //   this.stockTimeStamp = data.time_stamp;
-    //   this.stockTableData = data.data;
-    //   this.stockTableData.forEach((val, i) => {
-    //     val.index = i;
-    //     val.disableBuy = false;
-    //     val.disableSell = false;
-    //   });
-    // } else {
-    //   this.inProgress = false;
-    //   this.growlMsg.push({
-    //     severity: 'error',
-    //     summary: 'Error occured while loading the stocks, please try again',
-    //     detail: ''
-    //   });
-    // }
+    const data:any = this.stockRendererService.getStock();
+    if (data.result === UIConstants.SUCCESS
+      && data.status_code === UIConstants.STATUS_CODE) {
+      this.inProgress = false;
+      this.stockTimeStamp = data.time_stamp;
+      this.stockTableData = data.data;
+      this.stockTableData.forEach((val, i) => {
+        val.index = i;
+        val.disableBuy = false;
+        val.disableSell = false;
+      });
+    } else {
+      this.inProgress = false;
+      this.growlMsg.push({
+        severity: 'error',
+        summary: 'Error occured while loading the stocks, please try again',
+        detail: ''
+      });
+    }
   }
 
   private fetchTime() {

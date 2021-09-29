@@ -7,6 +7,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class SearchStockComponent implements OnInit {
+  temporaryHideSearchTab: boolean = true;
   
   constructor() { }
 
