@@ -8,12 +8,7 @@ import { UIConstants } from '../../constants/ui.constants'
   styleUrls: ['./stock-status.component.scss']
 })
 export class StockStatusComponent implements OnInit {
-  gridOptions: any = {
-    defaultColDef: {
-      headerClass: "header-class",
-      width: 70, cellStyle: { border: '1px solid' }
-    }
-  }
+  gridOptions: any = {}
   columnDefs = [];
   rowData = [];
   newVal: any = {};
@@ -33,7 +28,7 @@ export class StockStatusComponent implements OnInit {
         this.columnDefs.push({
           headerName: d.time,
           field: d.time,
-          width: 70,
+          width: 40,
           cellStyle: function (param) {
             return {
               'background-color': param.value,

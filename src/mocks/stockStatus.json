@@ -1696,7 +1696,7 @@
           "short_signal": "S"
         },
         {
-          "color": "#FF2D00",
+          "color": "purple",
           "time": "09:30",
           "signal": "SELL",
           "short_signal": "S"
