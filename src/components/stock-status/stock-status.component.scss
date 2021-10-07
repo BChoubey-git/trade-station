@@ -3,10 +3,12 @@
     height: 500px;
 }
 
-:host ::ng-deep {
-    .ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
-        transform: rotate(-90deg) !important;
-        padding: 0;
-    }
+.time-header {
+    background-color: yellow;
+}
+
+.rotate-header {
+    transform: rotate(-90deg) !important;
+    padding: 0 !important;
 }
 

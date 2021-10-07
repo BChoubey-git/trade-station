@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { StockStatusService } from '../../service/stock-status.service';
 import { UIConstants } from '../../constants/ui.constants'
 
 @Component({
   selector: 'app-stock-status',
   templateUrl: './stock-status.component.html',
-  styleUrls: ['./stock-status.component.scss']
+  styleUrls: ['./stock-status.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class StockStatusComponent implements OnInit {
   gridOptions: any = {}
@@ -28,14 +29,15 @@ export class StockStatusComponent implements OnInit {
         this.columnDefs.push({
           headerName: d.time,
           field: d.time,
-          width: 40,
+          width: 30,
           cellStyle: function (param) {
             return {
               'background-color': param.value,
               border: '1px solid black',
               color: param.value
             }
-          }
+          },
+          headerClass: d.isCurrentTime ? ['time-header', 'rotate-header'] : 'rotate-header'
         });
       });
       stockStatus.table_rows.forEach((val, i) => {
