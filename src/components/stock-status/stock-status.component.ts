@@ -23,7 +23,7 @@ export class StockStatusComponent implements OnInit {
         headerName: 'Stock',
         field: 'stock_name',
         pinned: 'left', resizable: true,
-        width: 200
+        width: 150
       });
       stockStatus.table_header.forEach(d => {
         this.columnDefs.push({
