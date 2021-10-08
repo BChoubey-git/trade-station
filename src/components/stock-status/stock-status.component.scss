@@ -12,3 +12,11 @@
     padding: 0 !important;
 }
 
+.ag-theme-alpine .ag-row {
+    height: 30px;
+}
+
+.ag-theme-alpine .ag-cell, .ag-theme-alpine .ag-full-width-row .ag-cell-wrapper.ag-row-group {
+    line-height: 25px;
+}
+
