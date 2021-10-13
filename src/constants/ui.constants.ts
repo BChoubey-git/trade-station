@@ -3,6 +3,7 @@ export class UIConstants {
     public static SUCCESS = 'success';
     public static STATUS_CODE = 200;
     public static LAST_REFRESH = 'Last Refresh';
+    public static redirectURL = 'https://kite.zerodha.com/chart/ext/ciq/NSE/';
     public static STOCK_TABLE_HEADERS = [
         { field: 'stock_name', header: 'Stock' },
         { field: 'sector_name', header: 'Sector' },

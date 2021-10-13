@@ -56,7 +56,7 @@ export class StockDetailsComponent implements OnInit {
     // });
 
     // loading data from mock json, stockDetails.json
-    const data:any = this.stockRendererService.getStock();
+    const data: any = this.stockRendererService.getStock();
     if (data.result === UIConstants.SUCCESS
       && data.status_code === UIConstants.STATUS_CODE) {
       this.inProgress = false;
@@ -78,49 +78,80 @@ export class StockDetailsComponent implements OnInit {
   }
 
   private fetchTime() {
-    this.timeList = this.stockRendererService.getTime().subscribe((data:any) => {
-      if (data.result === UIConstants.SUCCESS &&
-        data.status_code === UIConstants.STATUS_CODE) {
-        this.time = [];
-        let aTime: any = DropDown;
-        // console.log('time-> ', this.time);
-        data.data.forEach(item => {
-          aTime = {} as DropDown;
-          // console.log('time-> ', item);
-          aTime.value = item,
-            aTime.label = item
-          // console.log('aTime-> ', aTime)
-          this.time.push(aTime);
-          // console.log('a-> ', this.time)
-        });
-        // this.time = timeArray;
-        // console.log('a-> ', this.time)
-      }
-    });    
+    // This is calling data from mocks
+    const timeList = this.stockRendererService.getTime();
+    if (timeList.result === UIConstants.SUCCESS &&
+      timeList.status_code === UIConstants.STATUS_CODE) {
+      this.time = [];
+      let aTime: any = DropDown;
+      timeList.data.forEach(item => {
+        aTime = {} as DropDown;
+        aTime.value = item,
+          aTime.label = item
+        this.time.push(aTime);
+      });
+    }
+
+    //  Below code to be uncommented when working with service calls 
+    //   this.timeList = this.stockRendererService.getTime().subscribe((data:any) => {
+    //     if (data.result === UIConstants.SUCCESS &&
+    //       data.status_code === UIConstants.STATUS_CODE) {
+    //       this.time = [];
+    //       let aTime: any = DropDown;
+    //       data.data.forEach(item => {
+    //         aTime = {} as DropDown;
+    //         aTime.value = item,
+    //           aTime.label = item
+    //         this.time.push(aTime);
+    //       });
+    //     }
+    //   });    
   }
 
   private onTimeChange(event) {
     this.selectedTime = event.value;
-    const timedStock = this.stockRendererService.getTimedStock(this.selectedTime).subscribe((data:any) => {
-      if (data.result === UIConstants.SUCCESS
-        && data.status_code === UIConstants.STATUS_CODE) {
-        this.inProgress = false;
-        this.stockTimeStamp = data.time_stamp;
-        this.stockTableData = data.data;
-        this.stockTableData.forEach((val, i) => {
-          val.index = i;
-          val.disableBuy = false;
-          val.disableSell = false;
-        });
-      } else {
-        this.inProgress = false;
-        this.growlMsg.push({
-          severity: 'error',
-          summary: 'Error occured while loading the stocks, please try again',
-          detail: ''
-        });
-      }
-    });
+    // This is fetching data from mocks
+    const timedStock = this.stockRendererService.getTimedStock(this.selectedTime);
+    if (timedStock.result === UIConstants.SUCCESS
+      && timedStock.status_code === UIConstants.STATUS_CODE) {
+      this.inProgress = false;
+      this.stockTimeStamp = timedStock.time_stamp;
+      this.stockTableData = timedStock.data;
+      this.stockTableData.forEach((val, i) => {
+        val.index = i;
+        val.disableBuy = false;
+        val.disableSell = false;
+      });
+    } else {
+      this.inProgress = false;
+      this.growlMsg.push({
+        severity: 'error',
+        summary: 'Error occured while loading the stocks, please try again',
+        detail: ''
+      });
+    }
+
+    //  Below code to be uncommented when working with service calls 
+    // const timedStock = this.stockRendererService.getTimedStock(this.selectedTime).subscribe((data: any) => {
+    //   if (data.result === UIConstants.SUCCESS
+    //     && data.status_code === UIConstants.STATUS_CODE) {
+    //     this.inProgress = false;
+    //     this.stockTimeStamp = data.time_stamp;
+    //     this.stockTableData = data.data;
+    //     this.stockTableData.forEach((val, i) => {
+    //       val.index = i;
+    //       val.disableBuy = false;
+    //       val.disableSell = false;
+    //     });
+    //   } else {
+    //     this.inProgress = false;
+    //     this.growlMsg.push({
+    //       severity: 'error',
+    //       summary: 'Error occured while loading the stocks, please try again',
+    //       detail: ''
+    //     });
+    //   }
+    // });
   }
 
   private buyStock(stock) {
@@ -172,8 +203,7 @@ export class StockDetailsComponent implements OnInit {
   }
 
   private openChart(data) {
-    const URL = 'https://kite.zerodha.com/chart/ext/ciq/NSE/';
-    let siteURL = URL
+    let siteURL = UIConstants.redirectURL
       + data.stock_name
       + '/'
       + data.stock_instrument;
@@ -181,9 +211,7 @@ export class StockDetailsComponent implements OnInit {
   }
 
   private openFutureChart(data) {
-    console.log(data);
-    const URL = 'https://kite.zerodha.com/chart/ext/ciq/NSE/';
-    let siteURL = URL
+    let siteURL = UIConstants.redirectURL
       + data.future_name
       + '/'
       + data.future_instrument;

@@ -1,3 +1,5 @@
+$black: #000000;
+
 .search {
     text-align: left;
 }
@@ -51,8 +53,8 @@ tr:hover {
 
 .search-stock {
     border-radius: 20px;
-    border: 1px solid #000000;
-    color: #000000;
+    border: 1px solid $black;
+    color: $black;
     width: 200px;
     height: 30px;
     padding-left: 10px;
@@ -60,8 +62,8 @@ tr:hover {
 
 .search-stock:focus {
     outline: none;
-    border: 1px solid #000000;
-    color: #000000;
+    border: 1px solid $black;
+    color: $black;
 }
 
 input[type="search" i]::-webkit-search-cancel-button {

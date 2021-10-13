@@ -23,7 +23,16 @@ export class StockStatusComponent implements OnInit {
         headerName: 'Stock',
         field: 'stock_name',
         pinned: 'left', resizable: true,
-        width: 150
+        width: 150,
+        cellStyle: function () {
+          return {
+            cursor: 'pointer'
+          }
+        },
+        cellRenderer: function (params) {
+          let newLink = `<a href= ${UIConstants.redirectURL}${params.value}/${params.data.stock_instrument} target="_blank">${params.value}</a>`;
+          return newLink;
+        }
       });
       stockStatus.table_header.forEach(d => {
         this.columnDefs.push({
@@ -44,6 +53,7 @@ export class StockStatusComponent implements OnInit {
         this.newVal = {};
         val.data.forEach((value, ii) => {
           this.newVal.stock_name = val.stock_name;
+          this.newVal.stock_instrument = val.stock_instrument;
           this.newVal[value.time] = value.color
         })
         this.rowData.push(this.newVal);
